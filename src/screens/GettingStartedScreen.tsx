@@ -6,7 +6,7 @@ export const GettingStartedScreen = () => {
       <Box style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
         <Box gap="12px">
           <Text fontSize="72px" letterSpacing="9.5px" variant="h1">
-            Gepetto
+            Karmen
           </Text>
           <Link to="/context">
             <Text
