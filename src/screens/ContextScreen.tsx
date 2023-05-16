@@ -16,6 +16,8 @@ export const ContextScreen: React.FC = () => {
   }>({ clearContext: 'idle', fetchContext: 'idle', sendPrompt: 'idle' });
   const [context, setContext] = useState<ContextType>([]);
 
+  const lastMessage = context[context.length - 1];
+
   const scrollToBottom = () => {
     boxRef.current?.scrollIntoView({
       behavior: 'smooth',
@@ -34,10 +36,10 @@ export const ContextScreen: React.FC = () => {
       .catch(() => setStatus({ fetchContext: 'failed' }));
   };
 
-  const handleSendPrompt = () => {
+  const handleSendPrompt = (_prompt: string) => {
     setStatus({ sendPrompt: 'pending' });
 
-    sendPrompt(prompt)
+    sendPrompt(_prompt)
       .then(() => {
         setStatus({ sendPrompt: 'succeeded' });
         setPrompt('');
@@ -68,27 +70,45 @@ export const ContextScreen: React.FC = () => {
   return (
     <Background>
       <Box ref={boxRef}>
-        <Box gap="12px">
+        <Box gap="8px">
           <Context context={context} />
-          <Input
-            label="Envie sua mensagem"
-            fullWidth
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-          />
-          <Button
-            loading={status.sendPrompt === 'pending'}
-            disabled={status.sendPrompt === 'pending'}
-            text="Enviar"
-            onClick={handleSendPrompt}
-          />
-          <Button
-            variant="outlined"
-            text="Limpar contexto"
-            loading={status.clearContext === 'pending'}
-            disabled={status.clearContext === 'pending'}
-            onClick={handleClearContext}
-          />
+          <Fragment>
+            {lastMessage?.content.includes('botão abaixo') ? (
+              <Box flexDirection="row" gap="12px">
+                <Button variant="outlined" text="Começar tratamento" />
+                <Button
+                  variant="outlined"
+                  loading={status.sendPrompt === 'pending'}
+                  disabled={status.sendPrompt === 'pending'}
+                  text="Continuar consulta médica"
+                  onClick={() => handleSendPrompt('Continuar consulta médica.')}
+                />
+              </Box>
+            ) : (
+              <Box gap="12px">
+                <Input
+                  label="Envie sua mensagem"
+                  autoFocus
+                  fullWidth
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                />
+                <Button
+                  loading={status.sendPrompt === 'pending'}
+                  disabled={status.sendPrompt === 'pending'}
+                  text="Enviar"
+                  onClick={() => handleSendPrompt(prompt)}
+                />
+                <Button
+                  variant="text"
+                  text="Limpar contexto"
+                  loading={status.clearContext === 'pending'}
+                  disabled={status.clearContext === 'pending'}
+                  onClick={handleClearContext}
+                />
+              </Box>
+            )}
+          </Fragment>
         </Box>
       </Box>
     </Background>
