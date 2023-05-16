@@ -2,26 +2,50 @@ import { Fragment, useEffect, useState } from 'react';
 
 import { Status } from '@common/types';
 import { Background, Box, Button, Input, Text } from '@components';
-import { fetchContext, sendPrompt } from '@services/gpt';
+import { clearContext, fetchContext, sendPrompt } from '@services/gpt';
 import { black } from '@themes/default/colors';
 
 export const ContextScreen: React.FC = () => {
   const [prompt, setPrompt] = useState('');
-  const [status, setStatus] = useState<Status>('idle');
+  const [status, setStatus] = useState<{
+    clearContext?: Status;
+    fetchContext?: Status;
+    sendPrompt?: Status;
+  }>({ clearContext: 'idle', fetchContext: 'idle', sendPrompt: 'idle' });
   const [context, setContext] = useState<ContextType>([]);
 
   const handleFetchContext = () => {
-    fetchContext().then((res) => setContext(res.data.context));
+    setStatus({ fetchContext: 'pending' });
+
+    fetchContext()
+      .then((res) => {
+        setStatus({ fetchContext: 'succeeded' });
+        setContext(res.data.context);
+      })
+      .catch(() => setStatus({ fetchContext: 'failed' }));
   };
 
   const handleSendPrompt = () => {
-    setStatus('pending');
+    setStatus({ sendPrompt: 'pending' });
 
-    sendPrompt(prompt).then(() => {
-      setStatus('succeeded');
-      setPrompt('');
-      handleFetchContext();
-    });
+    sendPrompt(prompt)
+      .then(() => {
+        setStatus({ sendPrompt: 'succeeded' });
+        setPrompt('');
+        handleFetchContext();
+      })
+      .catch(() => setStatus({ sendPrompt: 'failed' }));
+  };
+
+  const handleClearContext = () => {
+    setStatus({ clearContext: 'pending' });
+
+    clearContext()
+      .then(() => {
+        setStatus({ clearContext: 'succeeded' });
+        handleFetchContext();
+      })
+      .catch(() => setStatus({ clearContext: 'failed' }));
   };
 
   useEffect(() => {
@@ -41,10 +65,17 @@ export const ContextScreen: React.FC = () => {
           />
           <Button
             backgroundColor="#0000ff"
-            loading={status === 'pending'}
-            disabled={status === 'pending'}
+            loading={status.sendPrompt === 'pending'}
+            disabled={status.sendPrompt === 'pending'}
             text="Enviar"
             onClick={handleSendPrompt}
+          />
+          <Button
+            variant="outlined"
+            text="Limpar contexto"
+            loading={status.clearContext === 'pending'}
+            disabled={status.clearContext === 'pending'}
+            onClick={handleClearContext}
           />
         </Box>
       </Box>
