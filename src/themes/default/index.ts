@@ -1,7 +1,7 @@
 import { Shadows, createTheme } from '@mui/material';
 import { shadows } from '@mui/system';
 
-import { black, carbon, gray, pink, red, slate, teal } from './colors';
+import { black, blue, carbon, gray, pink, red, slate } from './colors';
 
 export const defaultTheme = createTheme({
   shadows: Array(shadows.length).fill('none') as Shadows,
@@ -49,13 +49,13 @@ export const defaultTheme = createTheme({
   },
   palette: {
     primary: {
-      300: teal[300],
-      main: teal.main,
-      500: teal[500],
-      600: teal[600],
-      700: teal[700],
-      800: teal[800],
-      900: teal[900],
+      300: blue[300],
+      main: blue.main,
+      500: blue[500],
+      600: blue[600],
+      700: blue[700],
+      800: blue[800],
+      900: blue[900],
     },
     secondary: {
       300: pink[300],

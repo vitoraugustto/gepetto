@@ -10,14 +10,14 @@ interface PaletteColor {
   900: Color;
 }
 
-export const teal: PaletteColor = {
-  300: '#004F4F',
-  main: '#006A6A',
-  500: '#008585',
-  600: '#00A1A1',
-  700: '#1EBEBE',
-  800: '#4CDADA',
-  900: '#6FF7F6',
+export const blue: PaletteColor = {
+  300: '#0000E6',
+  main: '#0000ff',
+  500: '#1A1AFF',
+  600: '#3333FF',
+  700: '#4D4DFF',
+  800: '#6666FF',
+  900: '#8080FF',
 };
 
 export const slate: PaletteColor = {
