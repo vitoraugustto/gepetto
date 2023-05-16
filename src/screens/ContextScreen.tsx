@@ -91,7 +91,10 @@ export const ContextScreen: React.FC = () => {
                 <Button
                   variant="outlined"
                   loading={status.sendPrompt === 'pending'}
-                  disabled={status.sendPrompt === 'pending'}
+                  disabled={
+                    status.sendPrompt === 'pending' ||
+                    status.fetchContext === 'pending'
+                  }
                   text="Continuar consulta médica"
                   onClick={() => handleSendPrompt('Continuar consulta médica.')}
                 />
@@ -108,7 +111,10 @@ export const ContextScreen: React.FC = () => {
                 />
                 <Button
                   loading={status.sendPrompt === 'pending'}
-                  disabled={status.sendPrompt === 'pending'}
+                  disabled={
+                    status.sendPrompt === 'pending' ||
+                    status.fetchContext === 'pending'
+                  }
                   text="Enviar"
                   onClick={() => handleSendPrompt(prompt)}
                 />
@@ -116,7 +122,10 @@ export const ContextScreen: React.FC = () => {
                   variant="text"
                   text="Limpar contexto"
                   loading={status.clearContext === 'pending'}
-                  disabled={status.clearContext === 'pending'}
+                  disabled={
+                    status.clearContext === 'pending' ||
+                    status.fetchContext === 'pending'
+                  }
                   onClick={handleClearContext}
                 />
               </Box>
