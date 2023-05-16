@@ -102,7 +102,8 @@ export const ContextScreen: React.FC = () => {
                 loading={status.sendPrompt === 'pending'}
                 disabled={
                   status.sendPrompt === 'pending' ||
-                  status.fetchContext === 'pending'
+                  status.fetchContext === 'pending' ||
+                  prompt.length <= 1
                 }
                 text="Enviar"
                 onClick={() => handleSendPrompt(prompt)}
