@@ -92,7 +92,7 @@ export const ContextScreen: React.FC = () => {
             <Box gap="12px">
               <Input
                 onKeyPress={(e) => handleKeyPress(e)}
-                label="Envie sua mensagem"
+                label="Mensagem"
                 autoFocus
                 fullWidth
                 value={prompt}
