@@ -85,7 +85,9 @@ export const ContextScreen: React.FC = () => {
                   status.fetchContext === 'pending'
                 }
                 text="Continuar conversa com Karmen IA"
-                onClick={() => handleSendPrompt('Continuar consulta médica.')}
+                onClick={() =>
+                  handleSendPrompt('Continuar conversa com Karmen IA')
+                }
               />
             </Box>
           ) : (
