@@ -62,13 +62,17 @@ export const ContextScreen: React.FC = () => {
 
   return (
     <Background>
-      <Box gap="12px">
+      <Box>
         <Context context={context} />
-        <Fragment>
-          {status.fetchContext === 'pending' && (
-            <Text align="right">Pensando...</Text>
-          )}
-        </Fragment>
+        <Box mt="12px">
+          <Fragment>
+            {status.fetchContext === 'pending' ? (
+              <Text align="right">Pensando...</Text>
+            ) : (
+              <Text align="right">&nbsp;</Text>
+            )}
+          </Fragment>
+        </Box>
         <Fragment>
           {lastMessage?.content.includes('botão abaixo') ? (
             <Box flexDirection="row" gap="12px">
@@ -137,7 +141,7 @@ const Context: React.FC<{ context: ContextType }> = ({ context }) => {
       pr="8px"
       ref={boxRef}
       gap="8px"
-      height="75vh"
+      height="70vh"
       style={{ overflowX: 'auto' }}
     >
       <Fragment>
