@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 
 import { Status } from '@common/types';
 import { Background, Box, Button, Input, Text } from '@components';
@@ -6,6 +6,8 @@ import { clearContext, fetchContext, sendPrompt } from '@services/gpt';
 import { black } from '@themes/default/colors';
 
 export const ContextScreen: React.FC = () => {
+  const boxRef = useRef<HTMLDivElement>(null);
+
   const [prompt, setPrompt] = useState('');
   const [status, setStatus] = useState<{
     clearContext?: Status;
@@ -13,6 +15,13 @@ export const ContextScreen: React.FC = () => {
     sendPrompt?: Status;
   }>({ clearContext: 'idle', fetchContext: 'idle', sendPrompt: 'idle' });
   const [context, setContext] = useState<ContextType>([]);
+
+  const scrollToBottom = () => {
+    boxRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+  };
 
   const handleFetchContext = () => {
     setStatus({ fetchContext: 'pending' });
@@ -52,9 +61,13 @@ export const ContextScreen: React.FC = () => {
     handleFetchContext();
   }, []);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [context]);
+
   return (
     <Background>
-      <Box>
+      <Box ref={boxRef}>
         <Box gap="12px">
           <Context context={context} />
           <Input
@@ -64,7 +77,6 @@ export const ContextScreen: React.FC = () => {
             onChange={(e) => setPrompt(e.target.value)}
           />
           <Button
-            backgroundColor="#0000ff"
             loading={status.sendPrompt === 'pending'}
             disabled={status.sendPrompt === 'pending'}
             text="Enviar"
