@@ -63,6 +63,7 @@ export const ContextScreen: React.FC = () => {
     handleFetchContext();
   }, []);
 
+  // TODO: Refactor useEffect
   useEffect(() => {
     scrollToBottom();
   }, [context]);
