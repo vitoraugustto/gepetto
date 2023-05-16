@@ -80,6 +80,11 @@ export const ContextScreen: React.FC = () => {
         <Box gap="8px">
           <Context context={context} />
           <Fragment>
+            {status.fetchContext === 'pending' && (
+              <Text align="right">Pensando...</Text>
+            )}
+          </Fragment>
+          <Fragment>
             {lastMessage?.content.includes('botão abaixo') ? (
               <Box flexDirection="row" gap="12px">
                 <Button variant="outlined" text="Começar tratamento" />
