@@ -25,23 +25,23 @@ export const defaultTheme = createTheme({
     button: {
       textTransform: 'none',
       fontWeight: '700',
-      fontFamily: 'Titillium Web',
+      fontFamily: 'Merriweather Sans',
       letterSpacing: 1,
     },
     h1: {
-      fontFamily: 'Titillium Web',
+      fontFamily: 'Merriweather Sans',
       fontWeight: '600',
       fontSize: 28,
       color: black[700],
     },
     h2: {
-      fontFamily: 'Titillium Web',
+      fontFamily: 'Merriweather Sans',
       fontWeight: '600',
       fontSize: 24,
       color: black[700],
     },
     h3: {
-      fontFamily: 'Titillium Web',
+      fontFamily: 'Merriweather Sans',
       fontWeight: '600',
       fontSize: 20,
       color: black[700],

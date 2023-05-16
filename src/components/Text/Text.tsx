@@ -11,11 +11,12 @@ export const Text: React.FC<IText> = ({
   lineHeight,
   fontFamily,
   variant,
+  style,
   children,
 }) => {
   return (
     <Typography
-      sx={{ display: 'inline-block' }}
+      sx={{ display: 'inline-block', ...style }}
       color={color}
       fontWeight={fontWeight}
       fontSize={fontSize}

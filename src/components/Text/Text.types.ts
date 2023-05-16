@@ -1,4 +1,5 @@
 import { Color } from '@common/types';
+import { SxProps } from '@mui/material';
 
 export interface IText {
   children: React.ReactNode;
@@ -8,7 +9,8 @@ export interface IText {
   color?: Color | string;
   letterSpacing?: string | number;
   lineHeight?: string | number;
-  fontFamily?: 'Lato' | 'Titillium Web';
+  fontFamily?: 'Lato' | 'Merriweather Sans';
+  style?: SxProps;
   variant?:
     | 'h1'
     | 'h2'
