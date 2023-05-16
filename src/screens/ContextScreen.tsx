@@ -76,7 +76,7 @@ export const ContextScreen: React.FC = () => {
         <Fragment>
           {lastMessage?.content.includes('botão abaixo') ? (
             <Box flexDirection="row" gap="12px">
-              <Button variant="outlined" text="Começar tratamento" />
+              <Button variant="outlined" text="Falar com um médico agora" />
               <Button
                 variant="outlined"
                 loading={status.sendPrompt === 'pending'}
@@ -84,7 +84,7 @@ export const ContextScreen: React.FC = () => {
                   status.sendPrompt === 'pending' ||
                   status.fetchContext === 'pending'
                 }
-                text="Continuar consulta médica"
+                text="Continuar conversa com Karmen IA"
                 onClick={() => handleSendPrompt('Continuar consulta médica.')}
               />
             </Box>
