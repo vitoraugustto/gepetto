@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent } from 'react';
+import React, { ChangeEvent, FocusEvent } from 'react';
 
 export interface IInput {
   shouldFocus?: boolean;
@@ -8,6 +8,7 @@ export interface IInput {
   label?: string;
   maxLength?: number;
   value: string;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
