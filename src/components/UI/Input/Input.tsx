@@ -11,10 +11,12 @@ export const Input: React.FC<IInput> = ({
   value,
   onFocus,
   onChange,
+  onKeyPress,
   shouldFocus,
 }) => {
   return (
     <TextField
+      onKeyPress={onKeyPress}
       inputRef={(input) => shouldFocus && input && input.focus()}
       autoFocus={autoFocus}
       inputProps={{ maxLength: maxLength }}

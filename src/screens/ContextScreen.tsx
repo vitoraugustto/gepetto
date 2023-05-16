@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 
 import { Status } from '@common/types';
 import { Background, Box, Button, Input, Text } from '@components';
@@ -23,6 +23,12 @@ export const ContextScreen: React.FC = () => {
       behavior: 'smooth',
       block: 'end',
     });
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSendPrompt(prompt);
+    }
   };
 
   const handleFetchContext = () => {
@@ -88,6 +94,7 @@ export const ContextScreen: React.FC = () => {
             ) : (
               <Box gap="12px">
                 <Input
+                  onKeyPress={(e) => handleKeyPress(e)}
                   label="Envie sua mensagem"
                   autoFocus
                   fullWidth
