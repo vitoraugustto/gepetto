@@ -19,3 +19,6 @@ Gepetto is a healthbot designed to assist you with your symptoms. By providing G
 - Node
 - Express
 - GPT (gpt-3.5-turbo)
+
+
+Thank's for using Gepetto!
