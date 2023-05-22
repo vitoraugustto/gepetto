@@ -1,4 +1,4 @@
-## GEPETTO
+# GEPETTO
 
 Gepetto is a healthbot designed to assist you with your symptoms. By providing Gepetto with your symptoms, you can engage in a conversation and gain a better understanding of your health condition.
 
