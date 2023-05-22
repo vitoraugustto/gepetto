@@ -1,4 +1,4 @@
-# GEPETTO
+![image](https://github.com/vitoraugustto/gepetto/assets/60718553/e87bed0a-d89a-4f9b-8ddc-fe4fb6982b38)
 
 Gepetto is a healthbot designed to assist you with your symptoms. By providing Gepetto with your symptoms, you can engage in a conversation and gain a better understanding of your health condition.
 
