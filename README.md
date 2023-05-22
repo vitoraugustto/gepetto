@@ -8,3 +8,14 @@ Gepetto is a healthbot designed to assist you with your symptoms. By providing G
 **Interactive Conversation:** Engage in a dynamic conversation with Gepetto to explore your symptoms in-depth.
 
 **Personalized Recommendations:** Based on your symptoms, Gepetto offers personalized recommendations for further actions or medical advice.
+
+## Technologies
+### Front-end
+- React
+- TypeScript
+- Vite
+
+### Back-end
+- Node
+- Express
+- GPT (gpt-3.5-turbo)
