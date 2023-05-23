@@ -7,7 +7,7 @@ Gepetto is a healthbot designed to assist you with your symptoms. By providing G
 ## Features 🚀
 **Symptom Analysis:** Gepetto uses advanced algorithms to analyze your symptoms and provide relevant information.
 
-**Interactive Conversation:** Engage in a dynamic conversation with Gepetto to explore your symptoms in-depth.
+**Interactive Conversation:** Engage in a dynamic conversation with Gepetto to better understand your symptoms.
 
 **Personalized Recommendations:** Based on your symptoms, Gepetto offers personalized recommendations for further actions or medical advice.
 
