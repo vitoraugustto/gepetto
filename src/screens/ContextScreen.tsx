@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 
 import { Status } from '@common/types';
-import { Background, Box, Button, Input, Text } from '@components';
+import { Background, Box, Button, Input, Link, Text } from '@components';
 import { clearContext, fetchContext, sendPrompt } from '@services/gpt';
 import { black } from '@themes/default/colors';
 
@@ -74,9 +74,18 @@ export const ContextScreen: React.FC = () => {
           </Fragment>
         </Box>
         <Fragment>
-          {lastMessage?.content.includes('botão abaixo') ? (
+          {lastMessage?.content.includes('médico agora') && (
             <Box flexDirection="row" gap="12px">
-              <Button variant="outlined" text="Falar com um médico agora" />
+              <Button
+                variant="outlined"
+                loading={status.sendPrompt === 'pending'}
+                disabled={
+                  status.sendPrompt === 'pending' ||
+                  status.fetchContext === 'pending'
+                }
+                text="Falar com um médico agora"
+                onClick={() => handleSendPrompt('Falar com um médico agora')}
+              />
               <Button
                 variant="outlined"
                 loading={status.sendPrompt === 'pending'}
@@ -90,38 +99,59 @@ export const ContextScreen: React.FC = () => {
                 }
               />
             </Box>
-          ) : (
-            <Box gap="12px">
-              <Input
-                onKeyPress={(e) => handleKeyPress(e)}
-                label="Mensagem"
-                autoFocus
-                fullWidth
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-              />
+          )}
+          {lastMessage?.content.includes(
+            'atendimento médico está disponível'
+          ) && (
+            <a href="https://www.kompa.com.br/planos">
               <Button
+                variant="outlined"
                 loading={status.sendPrompt === 'pending'}
                 disabled={
                   status.sendPrompt === 'pending' ||
-                  status.fetchContext === 'pending' ||
-                  prompt.length <= 1
-                }
-                text="Enviar"
-                onClick={() => handleSendPrompt(prompt)}
-              />
-              <Button
-                variant="text"
-                text="Limpar contexto"
-                loading={status.clearContext === 'pending'}
-                disabled={
-                  status.clearContext === 'pending' ||
                   status.fetchContext === 'pending'
                 }
-                onClick={handleClearContext}
+                text="Conhecer planos"
+                onClick={() => handleSendPrompt('Conhecer planos')}
               />
-            </Box>
+            </a>
           )}
+
+          {!lastMessage?.content.includes(
+            'atendimento médico está disponível'
+          ) &&
+            !lastMessage?.content.includes('médico agora') && (
+              <Box gap="12px">
+                <Input
+                  onKeyPress={(e) => handleKeyPress(e)}
+                  label="Mensagem"
+                  autoFocus
+                  fullWidth
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                />
+                <Button
+                  loading={status.sendPrompt === 'pending'}
+                  disabled={
+                    status.sendPrompt === 'pending' ||
+                    status.fetchContext === 'pending' ||
+                    prompt.length <= 1
+                  }
+                  text="Enviar"
+                  onClick={() => handleSendPrompt(prompt)}
+                />
+                <Button
+                  variant="text"
+                  text="Limpar contexto"
+                  loading={status.clearContext === 'pending'}
+                  disabled={
+                    status.clearContext === 'pending' ||
+                    status.fetchContext === 'pending'
+                  }
+                  onClick={handleClearContext}
+                />
+              </Box>
+            )}
         </Fragment>
       </Box>
     </Background>
@@ -156,6 +186,7 @@ const Context: React.FC<{ context: ContextType }> = ({ context }) => {
             backgroundColor={message.role === 'user' ? '#dbdbdb' : '#61b2ff'}
           >
             <Text
+              style={{ whiteSpace: 'pre-line' }}
               align={message.role === 'user' ? 'left' : 'right'}
               color={black.main}
               fontWeight="600"
