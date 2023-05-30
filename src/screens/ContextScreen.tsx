@@ -103,7 +103,7 @@ export const ContextScreen: React.FC = () => {
           {lastMessage?.content.includes(
             'atendimento médico está disponível'
           ) && (
-            <a href="https://www.kompa.com.br/planos">
+            <a target="_blank" href="https://www.kompa.com.br/planos">
               <Button
                 variant="outlined"
                 loading={status.sendPrompt === 'pending'}
