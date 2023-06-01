@@ -22,7 +22,7 @@ export const ContextScreen: React.FC = () => {
     prompt.length <= 1;
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !isButtonDisabled) {
       handleSendPrompt(prompt);
     }
   };
