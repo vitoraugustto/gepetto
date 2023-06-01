@@ -16,6 +16,11 @@ export const ContextScreen: React.FC = () => {
 
   const lastMessage = context[context.length - 1];
 
+  const isButtonDisabled =
+    status.sendPrompt === 'pending' ||
+    status.fetchContext === 'pending' ||
+    prompt.length <= 1;
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSendPrompt(prompt);
@@ -100,11 +105,7 @@ export const ContextScreen: React.FC = () => {
               />
               <Button
                 loading={status.sendPrompt === 'pending'}
-                disabled={
-                  status.sendPrompt === 'pending' ||
-                  status.fetchContext === 'pending' ||
-                  prompt.length <= 1
-                }
+                disabled={isButtonDisabled}
                 text="Enviar"
                 onClick={() => handleSendPrompt(prompt)}
               />
