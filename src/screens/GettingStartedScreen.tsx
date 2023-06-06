@@ -1,4 +1,4 @@
-import { Background, Box, Button, Link, Text } from '@components';
+import { Background, Box, Button, Text } from '@components';
 
 export const GettingStartedScreen = () => {
   return (
