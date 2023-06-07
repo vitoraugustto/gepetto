@@ -2,8 +2,9 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 
 import { Status } from '@common/types';
 import { Background, Box, Button, Input, Text } from '@components';
+import { useTheme } from '@mui/material';
 import { clearContext, fetchContext, sendPrompt } from '@services/gpt';
-import { black } from '@themes/default/colors';
+import { white } from '@themes/default/colors';
 
 export const ContextScreen: React.FC = () => {
   const [prompt, setPrompt] = useState('');
@@ -128,6 +129,7 @@ export const ContextScreen: React.FC = () => {
 };
 
 const Context: React.FC<{ context: ContextType }> = ({ context }) => {
+  const theme = useTheme();
   const boxRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -152,11 +154,15 @@ const Context: React.FC<{ context: ContextType }> = ({ context }) => {
             borderRadius="8px"
             p="12px"
             key={index}
-            backgroundColor={message.role === 'user' ? '#dbdbdb' : '#61b2ff'}
+            backgroundColor={
+              message.role === 'user'
+                ? theme.palette.secondary.main
+                : theme.palette.primary.main
+            }
           >
             <Text
               align={message.role === 'user' ? 'left' : 'right'}
-              color={black.main}
+              color={white}
               fontWeight="600"
             >
               {message.content}
