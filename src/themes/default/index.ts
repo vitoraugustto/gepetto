@@ -1,5 +1,5 @@
 import { Shadows, createTheme } from '@mui/material';
-import { orange, purple } from '@mui/material/colors';
+import { pink, purple } from '@mui/material/colors';
 import { shadows } from '@mui/system';
 
 import { black, carbon, gray, red, slate } from './colors';
@@ -59,13 +59,13 @@ export const defaultTheme = createTheme({
       900: purple[900],
     },
     secondary: {
-      300: orange[300],
-      main: orange[400],
-      500: orange[500],
-      600: orange[600],
-      700: orange[700],
-      800: orange[800],
-      900: orange[900],
+      300: pink[300],
+      main: pink[400],
+      500: pink[500],
+      600: pink[600],
+      700: pink[700],
+      800: pink[800],
+      900: pink[900],
     },
     tertiary: {
       300: slate[300],
