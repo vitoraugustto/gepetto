@@ -163,6 +163,7 @@ const Context: React.FC<{ context: ContextType }> = ({ context }) => {
             <Text
               align={message.role === 'user' ? 'left' : 'right'}
               color={white}
+              fontFamily="Merriweather Sans"
             >
               {message.content}
             </Text>
