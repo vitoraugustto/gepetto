@@ -156,7 +156,7 @@ const Context: React.FC<{ context: ContextType }> = ({ context }) => {
             key={index}
             backgroundColor={
               message.role === 'user'
-                ? theme.palette.secondary.main
+                ? theme.palette.primary[700]
                 : theme.palette.primary.main
             }
           >
