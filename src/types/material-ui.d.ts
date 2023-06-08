@@ -38,6 +38,14 @@ declare module '@mui/material/styles' {
     };
   }
 
+  interface ThemeOptions {
+    backgroundColor: Color;
+  }
+
+  interface Theme {
+    backgroundColor: Color;
+  }
+
   interface PaletteOptions {
     tertiary: {
       300: Color;
