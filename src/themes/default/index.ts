@@ -15,6 +15,7 @@ export const defaultTheme = createTheme({
       xl: 1536,
     },
   },
+  backgroundColor: '#fdd5ff',
   typography: {
     body1: {
       color: black[700],
