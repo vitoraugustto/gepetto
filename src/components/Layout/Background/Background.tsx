@@ -1,5 +1,5 @@
 import { Box } from '@components';
-import { useTheme } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 import { IBackground } from './Background.types';
 
@@ -9,7 +9,7 @@ export const Background: React.FC<IBackground> = ({ children }) => {
   return (
     <Box
       py="24px"
-      px="12%"
+      px={useMediaQuery(theme.breakpoints.down('md')) ? '2%' : '22%'}
       backgroundColor={theme.backgroundColor}
       minHeight="100vh"
     >
