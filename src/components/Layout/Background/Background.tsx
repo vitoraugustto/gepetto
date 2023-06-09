@@ -11,7 +11,7 @@ export const Background: React.FC<IBackground> = ({ children }) => {
       py="24px"
       px="12%"
       backgroundColor={theme.backgroundColor}
-      minHeight={'100vh'}
+      minHeight="100vh"
     >
       <>{children}</>
     </Box>
