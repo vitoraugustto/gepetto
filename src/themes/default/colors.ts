@@ -10,16 +10,6 @@ interface PaletteColor {
   900: Color;
 }
 
-export const blue: PaletteColor = {
-  300: '#0000E6',
-  main: '#0000ff',
-  500: '#1A1AFF',
-  600: '#3333FF',
-  700: '#4D4DFF',
-  800: '#6666FF',
-  900: '#8080FF',
-};
-
 export const slate: PaletteColor = {
   300: '#324B4B',
   main: '#4A6363',
@@ -28,16 +18,6 @@ export const slate: PaletteColor = {
   700: '#95B0B0',
   800: '#B0CCCB',
   900: '#CCE8E7',
-};
-
-export const pink: PaletteColor = {
-  300: '#910033',
-  main: '#BD0046',
-  500: '#E4235B',
-  600: '#FF4F76',
-  700: '#FF869A',
-  800: '#FFB2BB',
-  900: '#FFD9DD',
 };
 
 export const red: PaletteColor = {
