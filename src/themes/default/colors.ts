@@ -10,16 +10,6 @@ interface PaletteColor {
   900: Color;
 }
 
-export const slate: PaletteColor = {
-  300: '#324B4B',
-  main: '#4A6363',
-  500: '#627C7B',
-  600: '#7B9695',
-  700: '#95B0B0',
-  800: '#B0CCCB',
-  900: '#CCE8E7',
-};
-
 export const gray: PaletteColor = {
   300: '#444747',
   main: '#5B5F5F',
