@@ -77,14 +77,5 @@ export const defaultTheme = createTheme({
       800: gray[800],
       900: gray[900],
     },
-    neutralVariant: {
-      300: carbon[300],
-      main: carbon.main,
-      500: carbon[500],
-      600: carbon[600],
-      700: carbon[700],
-      800: carbon[800],
-      900: carbon[900],
-    },
   },
 });

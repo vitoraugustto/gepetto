@@ -18,15 +18,6 @@ declare module '@mui/material/styles' {
       800: Color;
       900: Color;
     };
-    neutralVariant: {
-      300: Color;
-      main: Color;
-      500: Color;
-      600: Color;
-      700: Color;
-      800: Color;
-      900: Color;
-    };
   }
 
   interface ThemeOptions {
@@ -39,15 +30,6 @@ declare module '@mui/material/styles' {
 
   interface PaletteOptions {
     neutral: {
-      300: Color;
-      main: Color;
-      500: Color;
-      600: Color;
-      700: Color;
-      800: Color;
-      900: Color;
-    };
-    neutralVariant: {
       300: Color;
       main: Color;
       500: Color;
