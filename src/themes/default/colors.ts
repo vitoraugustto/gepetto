@@ -20,16 +20,6 @@ export const slate: PaletteColor = {
   900: '#CCE8E7',
 };
 
-export const red: PaletteColor = {
-  300: '#93000A',
-  main: '#BA1A1A',
-  500: '#DE3730',
-  600: '#FF5449',
-  700: '#FF897D',
-  800: '#FFB4AB',
-  900: '#FFDAD6',
-};
-
 export const gray: PaletteColor = {
   300: '#444747',
   main: '#5B5F5F',
