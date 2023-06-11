@@ -47,15 +47,6 @@ declare module '@mui/material/styles' {
   }
 
   interface PaletteOptions {
-    tertiary: {
-      300: Color;
-      main: Color;
-      500: Color;
-      600: Color;
-      700: Color;
-      800: Color;
-      900: Color;
-    };
     neutral: {
       300: Color;
       main: Color;

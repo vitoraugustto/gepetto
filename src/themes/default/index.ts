@@ -68,15 +68,6 @@ export const defaultTheme = createTheme({
       800: pink[800],
       900: pink[900],
     },
-    tertiary: {
-      300: slate[300],
-      main: slate.main,
-      500: slate[500],
-      600: slate[600],
-      700: slate[700],
-      800: slate[800],
-      900: slate[900],
-    },
     error: {
       300: red[300],
       main: red.main,
