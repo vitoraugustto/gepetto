@@ -40,16 +40,6 @@ export const gray: PaletteColor = {
   900: '#E0E3E2',
 };
 
-export const carbon: PaletteColor = {
-  300: '#3F4948',
-  main: '#566060',
-  500: '#6F7979',
-  600: '#889392',
-  700: '#A3ADAD',
-  800: '#BEC9C8',
-  900: '#DAE5E4',
-};
-
 export const black: PaletteColor = {
   300: '#0a0a0a',
   main: '#141414',
