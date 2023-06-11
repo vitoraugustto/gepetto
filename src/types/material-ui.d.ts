@@ -9,15 +9,6 @@ declare module '@mui/material/ButtonBase' {
 }
 declare module '@mui/material/styles' {
   interface Palette {
-    tertiary: {
-      300: Color;
-      main: Color;
-      500: Color;
-      600: Color;
-      700: Color;
-      800: Color;
-      900: Color;
-    };
     neutral: {
       300: Color;
       main: Color;
