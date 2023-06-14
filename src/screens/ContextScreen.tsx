@@ -108,8 +108,13 @@ export const ContextScreen: React.FC = () => {
                 />
                 <Box
                   backgroundColor={theme.palette.primary.main}
-                  onClick={() => handleSendPrompt(prompt)}
+                  onClick={
+                    isButtonDisabled
+                      ? () => null
+                      : () => handleSendPrompt(prompt)
+                  }
                   style={{
+                    cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
                     transition: '0.3s',
                     filter: isButtonDisabled ? 'opacity(0.5)' : 'opacity(1)',
                   }}
