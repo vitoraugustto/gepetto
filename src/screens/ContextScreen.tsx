@@ -7,6 +7,7 @@ import { clearContext, fetchContext, sendPrompt } from '@services/gpt';
 import { white } from '@themes/default/colors';
 
 export const ContextScreen: React.FC = () => {
+  const theme = useTheme();
   const [prompt, setPrompt] = useState('');
   const [status, setStatus] = useState<{
     clearContext?: Status;
@@ -95,21 +96,25 @@ export const ContextScreen: React.FC = () => {
               />
             </Box>
           ) : (
-            <Box gap="12px">
-              <Input
-                onKeyPress={(e) => handleKeyPress(e)}
-                label="Mensagem"
-                autoFocus
-                fullWidth
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-              />
-              <Button
-                loading={status.sendPrompt === 'pending'}
-                disabled={isButtonDisabled}
-                text="Enviar"
-                onClick={() => handleSendPrompt(prompt)}
-              />
+            <Box>
+              <Box gap="12px" flexDirection="row">
+                <Input
+                  onKeyPress={(e) => handleKeyPress(e)}
+                  label="Mensagem"
+                  autoFocus
+                  fullWidth
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                />
+                <Box
+                  backgroundColor={theme.palette.primary.main}
+                  onClick={() => handleSendPrompt(prompt)}
+                  style={{
+                    transition: '0.3s',
+                    filter: isButtonDisabled ? 'opacity(0.5)' : 'opacity(1)',
+                  }}
+                />
+              </Box>
               <Button
                 variant="text"
                 text="Limpar contexto"
