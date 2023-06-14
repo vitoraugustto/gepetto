@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 
+import { ReactComponent as Loading } from '@assets/svgs/loading.svg';
+import { ReactComponent as Send } from '@assets/svgs/send.svg';
 import { Status } from '@common/types';
 import { Background, Box, Button, Input, Text } from '@components';
 import { useTheme } from '@mui/material';
@@ -117,8 +119,16 @@ export const ContextScreen: React.FC = () => {
                     cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
                     transition: '0.3s',
                     filter: isButtonDisabled ? 'opacity(0.5)' : 'opacity(1)',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                   }}
-                />
+                >
+                  {status.sendPrompt ? (
+                    <Loading height="38px" width="38px" color={white} />
+                  ) : (
+                    <Send height="38px" width="38px" color={white} />
+                  )}
+                </Box>
               </Box>
               <Button
                 variant="text"
