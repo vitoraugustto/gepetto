@@ -110,6 +110,9 @@ export const ContextScreen: React.FC = () => {
                 />
                 <Box
                   backgroundColor={theme.palette.primary.main}
+                  minWidth="56px"
+                  minHeight="56px"
+                  borderRadius="28px"
                   onClick={
                     isButtonDisabled
                       ? () => null
