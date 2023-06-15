@@ -98,7 +98,7 @@ export const ContextScreen: React.FC = () => {
               />
             </Box>
           ) : (
-            <Box>
+            <Box gap="12px">
               <Box gap="12px" flexDirection="row">
                 <Input
                   onKeyPress={(e) => handleKeyPress(e)}
