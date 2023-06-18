@@ -17,6 +17,7 @@ export const Button: React.FC<IButton> = ({
   color,
   backgroundColor,
   loading,
+  style = {},
   onClick,
 }) => {
   return (
@@ -33,6 +34,7 @@ export const Button: React.FC<IButton> = ({
         ':hover': {
           backgroundColor: backgroundColor + '8d',
         },
+        ...style,
       }}
       fullWidth={fullWidth}
       disabled={disabled}

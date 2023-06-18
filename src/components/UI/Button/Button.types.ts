@@ -1,4 +1,5 @@
 import { Color } from '@common/types';
+import { SxProps } from '@mui/material';
 
 // TODO: backgroundColor should be 'Color' instead of 'Color | string'. But I could not override 'PaletteColor.main' to type 'Color'.
 
@@ -13,6 +14,7 @@ export interface IButton {
   text: string;
   backgroundColor?: Color | string;
   color?: Color;
+  style?: SxProps;
   loading?: boolean;
   onClick?: () => void;
 }
