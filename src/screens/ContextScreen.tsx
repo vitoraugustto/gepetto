@@ -11,11 +11,11 @@ import { white } from '@themes/default/colors';
 export const ContextScreen: React.FC = () => {
   const theme = useTheme();
   const [prompt, setPrompt] = useState('');
-  const [status, setStatus] = useState<{
-    clearContext?: Status;
-    fetchContext?: Status;
-    sendPrompt?: Status;
-  }>({ clearContext: 'idle', fetchContext: 'idle', sendPrompt: 'idle' });
+  const [status, setStatus] = useState<IMedicalChatStatus>({
+    clearContext: 'idle',
+    fetchContext: 'idle',
+    sendPrompt: 'idle',
+  });
   const [context, setContext] = useState<ContextType>([]);
 
   const lastMessage = context[context.length - 1];
@@ -201,3 +201,9 @@ type ContextType = {
   role: 'user' | 'system';
   content: string;
 }[];
+
+interface IMedicalChatStatus {
+  clearContext?: Status;
+  fetchContext?: Status;
+  sendPrompt?: Status;
+}
