@@ -98,7 +98,21 @@ export const ContextScreen: React.FC = () => {
               />
             </Box>
           ) : (
-            <Box gap="12px">
+            <Box>
+              <Box flexDirection="row">
+                <PromptSuggestion
+                  suggestion="Sim"
+                  handleSendPrompt={handleSendPrompt}
+                />
+                <PromptSuggestion
+                  suggestion="Não"
+                  handleSendPrompt={handleSendPrompt}
+                />
+                <PromptSuggestion
+                  suggestion="Não sei"
+                  handleSendPrompt={handleSendPrompt}
+                />
+              </Box>
               <Box gap="12px" flexDirection="row">
                 <Input
                   onKeyPress={(e) => handleKeyPress(e)}
@@ -148,6 +162,31 @@ export const ContextScreen: React.FC = () => {
         </Fragment>
       </Box>
     </Background>
+  );
+};
+
+const PromptSuggestion: React.FC<{
+  suggestion: string;
+  handleSendPrompt: (suggestion: string) => void;
+}> = ({ suggestion, handleSendPrompt }) => {
+  const theme = useTheme();
+
+  return (
+    <Box
+      onClick={() => {
+        selectedSuggestion = suggestion;
+        handleSendPrompt(suggestion);
+      }}
+    >
+      <Text
+        color={theme.palette.secondary.main}
+        fontWeight="700"
+        fontFamily="Merriweather Sans"
+        fontSize="14px"
+      >
+        {suggestion}
+      </Text>
+    </Box>
   );
 };
 
@@ -201,6 +240,8 @@ type ContextType = {
   role: 'user' | 'system';
   content: string;
 }[];
+
+let selectedSuggestion;
 
 interface IMedicalChatStatus {
   clearContext?: Status;
