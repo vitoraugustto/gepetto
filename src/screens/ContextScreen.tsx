@@ -101,14 +101,17 @@ export const ContextScreen: React.FC = () => {
             <Box>
               <Box flexDirection="row">
                 <PromptSuggestion
+                  status={status}
                   suggestion="Sim"
                   handleSendPrompt={handleSendPrompt}
                 />
                 <PromptSuggestion
+                  status={status}
                   suggestion="Não"
                   handleSendPrompt={handleSendPrompt}
                 />
                 <PromptSuggestion
+                  status={status}
                   suggestion="Não sei"
                   handleSendPrompt={handleSendPrompt}
                 />
@@ -167,8 +170,9 @@ export const ContextScreen: React.FC = () => {
 
 const PromptSuggestion: React.FC<{
   suggestion: string;
+  status: IMedicalChatStatus;
   handleSendPrompt: (suggestion: string) => void;
-}> = ({ suggestion, handleSendPrompt }) => {
+}> = ({ suggestion, status, handleSendPrompt }) => {
   const theme = useTheme();
 
   return (
@@ -178,14 +182,23 @@ const PromptSuggestion: React.FC<{
         handleSendPrompt(suggestion);
       }}
     >
-      <Text
-        color={theme.palette.secondary.main}
-        fontWeight="700"
-        fontFamily="Merriweather Sans"
-        fontSize="14px"
-      >
-        {suggestion}
-      </Text>
+      {status.sendPrompt === 'succeeded' &&
+      selectedSuggestion === suggestion ? (
+        <Loading
+          height="14px"
+          width="14px"
+          color={theme.palette.secondary.main}
+        />
+      ) : (
+        <Text
+          color={theme.palette.secondary.main}
+          fontWeight="700"
+          fontFamily="Merriweather Sans"
+          fontSize="14px"
+        >
+          {suggestion}
+        </Text>
+      )}
     </Box>
   );
 };
@@ -241,7 +254,7 @@ type ContextType = {
   content: string;
 }[];
 
-let selectedSuggestion;
+let selectedSuggestion: string;
 
 interface IMedicalChatStatus {
   clearContext?: Status;
