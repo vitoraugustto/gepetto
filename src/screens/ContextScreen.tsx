@@ -195,15 +195,18 @@ const PromptSuggestion: React.FC<{
 }> = ({ suggestion, status, handleSendPrompt }) => {
   const theme = useTheme();
 
+  console.log(selectedSuggestion);
+
   return (
     <Box
       onClick={() => {
+        if (status.sendPrompt === 'pending') return;
+
         selectedSuggestion = suggestion;
         handleSendPrompt(suggestion);
       }}
     >
-      {status.sendPrompt === 'succeeded' &&
-      selectedSuggestion === suggestion ? (
+      {status.sendPrompt === 'pending' && selectedSuggestion === suggestion ? (
         <Loading
           height="14px"
           width="14px"
@@ -211,7 +214,11 @@ const PromptSuggestion: React.FC<{
         />
       ) : (
         <Text
-          color={theme.palette.secondary.main}
+          color={
+            status.sendPrompt === 'pending'
+              ? theme.palette.neutral.main
+              : theme.palette.secondary.main
+          }
           fontWeight="700"
           fontFamily="Merriweather Sans"
           fontSize="14px"
