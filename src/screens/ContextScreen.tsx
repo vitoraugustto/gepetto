@@ -1,4 +1,11 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  Fragment,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { ReactComponent as Loading } from '@assets/svgs/loading.svg';
 import { ReactComponent as Send } from '@assets/svgs/send.svg';
@@ -32,26 +39,26 @@ export const ContextScreen: React.FC = () => {
   };
 
   const handleFetchContext = () => {
-    setStatus({ fetchContext: 'pending' });
+    updateStatus('fetchContext', 'pending', setStatus);
 
     fetchContext()
       .then((res) => {
-        setStatus({ fetchContext: 'succeeded' });
+        updateStatus('fetchContext', 'succeeded', setStatus);
         setContext(res.data.context);
       })
-      .catch(() => setStatus({ fetchContext: 'failed' }));
+      .catch(() => updateStatus('fetchContext', 'failed', setStatus));
   };
 
   const handleSendPrompt = (_prompt: string) => {
-    setStatus({ sendPrompt: 'pending' });
+    updateStatus('sendPrompt', 'pending', setStatus);
 
     sendPrompt(_prompt)
       .then(() => {
-        setStatus({ sendPrompt: 'succeeded' });
+        updateStatus('sendPrompt', 'succeeded', setStatus);
         setPrompt('');
         handleFetchContext();
       })
-      .catch(() => setStatus({ sendPrompt: 'failed' }));
+      .catch(() => updateStatus('sendPrompt', 'failed', setStatus));
   };
 
   const handleClearContext = () => {
@@ -68,6 +75,8 @@ export const ContextScreen: React.FC = () => {
   useEffect(() => {
     handleFetchContext();
   }, []);
+
+  console.log(status);
 
   return (
     <Background>
@@ -166,6 +175,17 @@ export const ContextScreen: React.FC = () => {
       </Box>
     </Background>
   );
+};
+
+const updateStatus = (
+  key: 'fetchContext' | 'clearContext' | 'sendPrompt',
+  status: Status,
+  setStatus: Dispatch<SetStateAction<IMedicalChatStatus>>
+) => {
+  return setStatus((prevState) => ({
+    ...prevState,
+    [key]: status,
+  }));
 };
 
 const PromptSuggestion: React.FC<{
