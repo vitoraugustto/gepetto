@@ -152,7 +152,7 @@ export const ContextScreen: React.FC = () => {
                     alignItems: 'center',
                   }}
                 >
-                  {status.sendPrompt ? (
+                  {status.sendPrompt === 'pending' ? (
                     <Loading height="38px" width="38px" color={white} />
                   ) : (
                     <Send height="38px" width="38px" color={white} />
