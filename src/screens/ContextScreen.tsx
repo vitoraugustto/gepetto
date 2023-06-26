@@ -179,12 +179,12 @@ export const ContextScreen: React.FC = () => {
 
 const updateStatus = (
   key: 'fetchContext' | 'clearContext' | 'sendPrompt',
-  status: Status,
+  value: Status,
   setStatus: Dispatch<SetStateAction<IMedicalChatStatus>>
 ) => {
   return setStatus((prevState) => ({
     ...prevState,
-    [key]: status,
+    [key]: value,
   }));
 };
 
