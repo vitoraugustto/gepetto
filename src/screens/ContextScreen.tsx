@@ -39,6 +39,8 @@ export const ContextScreen: React.FC = () => {
   };
 
   const handleFetchContext = () => {
+    selectedSuggestion = '';
+
     updateStatus('fetchContext', 'pending', setStatus);
 
     fetchContext()
