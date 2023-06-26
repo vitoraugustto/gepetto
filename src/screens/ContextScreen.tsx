@@ -76,8 +76,6 @@ export const ContextScreen: React.FC = () => {
     handleFetchContext();
   }, []);
 
-  console.log(status);
-
   return (
     <Background>
       <Box>
@@ -194,8 +192,6 @@ const PromptSuggestion: React.FC<{
   handleSendPrompt: (suggestion: string) => void;
 }> = ({ suggestion, status, handleSendPrompt }) => {
   const theme = useTheme();
-
-  console.log(selectedSuggestion);
 
   return (
     <Box
