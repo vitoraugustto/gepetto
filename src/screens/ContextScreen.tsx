@@ -62,14 +62,14 @@ export const ContextScreen: React.FC = () => {
   };
 
   const handleClearContext = () => {
-    setStatus({ clearContext: 'pending' });
+    updateStatus('clearContext', 'pending', setStatus);
 
     clearContext()
       .then(() => {
-        setStatus({ clearContext: 'succeeded' });
+        updateStatus('clearContext', 'succeeded', setStatus);
         handleFetchContext();
       })
-      .catch(() => setStatus({ clearContext: 'failed' }));
+      .catch(() => updateStatus('clearContext', 'failed', setStatus));
   };
 
   useEffect(() => {
