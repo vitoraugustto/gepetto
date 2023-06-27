@@ -82,15 +82,6 @@ export const ContextScreen: React.FC = () => {
     <Background>
       <Box>
         <Context context={context} />
-        <Box mt="12px">
-          <Fragment>
-            {status.fetchContext === 'pending' ? (
-              <Text align="right">Pensando...</Text>
-            ) : (
-              <Text align="right">&nbsp;</Text>
-            )}
-          </Fragment>
-        </Box>
         <Fragment>
           {lastMessage?.content.includes('botão abaixo') ? (
             <Box flexDirection="row" gap="12px">
@@ -108,22 +99,34 @@ export const ContextScreen: React.FC = () => {
             </Box>
           ) : (
             <Box>
-              <Box flexDirection="row">
-                <PromptSuggestion
-                  status={status}
-                  suggestion="Sim"
-                  handleSendPrompt={handleSendPrompt}
-                />
-                <PromptSuggestion
-                  status={status}
-                  suggestion="Não"
-                  handleSendPrompt={handleSendPrompt}
-                />
-                <PromptSuggestion
-                  status={status}
-                  suggestion="Não sei"
-                  handleSendPrompt={handleSendPrompt}
-                />
+              <Box
+                flexDirection="row"
+                style={{ justifyContent: 'space-between' }}
+              >
+                <Box flexDirection="row">
+                  <PromptSuggestion
+                    status={status}
+                    suggestion="Sim"
+                    handleSendPrompt={handleSendPrompt}
+                  />
+                  <PromptSuggestion
+                    status={status}
+                    suggestion="Não"
+                    handleSendPrompt={handleSendPrompt}
+                  />
+                  <PromptSuggestion
+                    status={status}
+                    suggestion="Não sei"
+                    handleSendPrompt={handleSendPrompt}
+                  />
+                </Box>
+                <Fragment>
+                  {status.fetchContext === 'succeeded' ? (
+                    <Text align="right">Pensando...</Text>
+                  ) : (
+                    <Text align="right">&nbsp;</Text>
+                  )}
+                </Fragment>
               </Box>
               <Box gap="12px" flexDirection="row">
                 <Input
