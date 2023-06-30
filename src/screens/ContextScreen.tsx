@@ -209,8 +209,8 @@ const PromptSuggestion: React.FC<{
     >
       {status.sendPrompt === 'pending' && selectedSuggestion === suggestion ? (
         <Loading
-          height="14px"
-          width="14px"
+          height="20px"
+          width="20px"
           color={theme.palette.secondary.main}
         />
       ) : (
