@@ -121,7 +121,7 @@ export const ContextScreen: React.FC = () => {
                   />
                 </Box>
                 <Fragment>
-                  {status.fetchContext === 'succeeded' ? (
+                  {status.fetchContext === 'pending' ? (
                     <Text align="right">Pensando...</Text>
                   ) : (
                     <Text align="right">&nbsp;</Text>
