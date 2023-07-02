@@ -25,8 +25,6 @@ export const ContextScreen: React.FC = () => {
   });
   const [context, setContext] = useState<ContextType>([]);
 
-  const lastMessage = context[context.length - 1];
-
   const isButtonDisabled =
     status.sendPrompt === 'pending' ||
     status.fetchContext === 'pending' ||
@@ -83,97 +81,79 @@ export const ContextScreen: React.FC = () => {
       <Box>
         <Context context={context} />
         <Fragment>
-          {lastMessage?.content.includes('botão abaixo') ? (
-            <Box flexDirection="row" gap="12px">
-              <Button variant="outlined" text="Começar tratamento" />
-              <Button
-                variant="outlined"
-                loading={status.sendPrompt === 'pending'}
-                disabled={
-                  status.sendPrompt === 'pending' ||
-                  status.fetchContext === 'pending'
-                }
-                text="Continuar consulta médica"
-                onClick={() => handleSendPrompt('Continuar consulta médica.')}
-              />
-            </Box>
-          ) : (
-            <Box>
-              <Box
-                flexDirection="row"
-                style={{ justifyContent: 'space-between' }}
-              >
-                <Box flexDirection="row">
-                  <PromptSuggestion
-                    status={status}
-                    suggestion="Sim"
-                    handleSendPrompt={handleSendPrompt}
-                  />
-                  <PromptSuggestion
-                    status={status}
-                    suggestion="Não"
-                    handleSendPrompt={handleSendPrompt}
-                  />
-                  <PromptSuggestion
-                    status={status}
-                    suggestion="Não sei"
-                    handleSendPrompt={handleSendPrompt}
-                  />
-                </Box>
-                <Fragment>
-                  {status.fetchContext === 'pending' ? (
-                    <Text align="right">Pensando...</Text>
-                  ) : (
-                    <Text align="right">&nbsp;</Text>
-                  )}
-                </Fragment>
-              </Box>
-              <Box gap="12px" flexDirection="row">
-                <Input
-                  onKeyPress={(e) => handleKeyPress(e)}
-                  label="Mensagem"
-                  autoFocus
-                  fullWidth
-                  value={prompt}
-                  onChange={(e) => setPrompt(e.target.value)}
+          <Box>
+            <Box
+              flexDirection="row"
+              style={{ justifyContent: 'space-between' }}
+            >
+              <Box flexDirection="row">
+                <PromptSuggestion
+                  status={status}
+                  suggestion="Sim"
+                  handleSendPrompt={handleSendPrompt}
                 />
-                <Box
-                  backgroundColor={theme.palette.primary.main}
-                  minWidth="56px"
-                  minHeight="56px"
-                  borderRadius="28px"
-                  onClick={
-                    isButtonDisabled
-                      ? () => null
-                      : () => handleSendPrompt(prompt)
-                  }
-                  style={{
-                    cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
-                    transition: '0.3s',
-                    filter: isButtonDisabled ? 'opacity(0.5)' : 'opacity(1)',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  {status.sendPrompt === 'pending' ? (
-                    <Loading height="38px" width="38px" color={white} />
-                  ) : (
-                    <Send height="38px" width="38px" color={white} />
-                  )}
-                </Box>
+                <PromptSuggestion
+                  status={status}
+                  suggestion="Não"
+                  handleSendPrompt={handleSendPrompt}
+                />
+                <PromptSuggestion
+                  status={status}
+                  suggestion="Não sei"
+                  handleSendPrompt={handleSendPrompt}
+                />
               </Box>
-              <Button
-                variant="text"
-                text="Limpar contexto"
-                loading={status.clearContext === 'pending'}
-                disabled={
-                  status.clearContext === 'pending' ||
-                  status.fetchContext === 'pending'
-                }
-                onClick={handleClearContext}
-              />
+              <Fragment>
+                {status.fetchContext === 'pending' ? (
+                  <Text align="right">Pensando...</Text>
+                ) : (
+                  <Text align="right">&nbsp;</Text>
+                )}
+              </Fragment>
             </Box>
-          )}
+            <Box gap="12px" flexDirection="row">
+              <Input
+                onKeyPress={(e) => handleKeyPress(e)}
+                label="Mensagem"
+                autoFocus
+                fullWidth
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+              />
+              <Box
+                backgroundColor={theme.palette.primary.main}
+                minWidth="56px"
+                minHeight="56px"
+                borderRadius="28px"
+                onClick={
+                  isButtonDisabled ? () => null : () => handleSendPrompt(prompt)
+                }
+                style={{
+                  cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
+                  transition: '0.3s',
+                  filter: isButtonDisabled ? 'opacity(0.5)' : 'opacity(1)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                {status.sendPrompt === 'pending' ? (
+                  <Loading height="38px" width="38px" color={white} />
+                ) : (
+                  <Send height="38px" width="38px" color={white} />
+                )}
+              </Box>
+            </Box>
+            <Button
+              variant="text"
+              text="Limpar contexto"
+              loading={status.clearContext === 'pending'}
+              disabled={
+                status.clearContext === 'pending' ||
+                status.fetchContext === 'pending'
+              }
+              onClick={handleClearContext}
+            />
+          </Box>
         </Fragment>
       </Box>
     </Background>
