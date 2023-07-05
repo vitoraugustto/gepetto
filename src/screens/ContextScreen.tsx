@@ -13,7 +13,7 @@ import { Status } from '@common/types';
 import { Background, Box, Button, Input, Text } from '@components';
 import { useTheme } from '@mui/material';
 import { clearContext, fetchContext, sendPrompt } from '@services/gpt';
-import { white } from '@themes/default/colors';
+import { white } from '@themes/colors';
 
 export const ContextScreen: React.FC = () => {
   const theme = useTheme();
