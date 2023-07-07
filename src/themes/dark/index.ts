@@ -2,7 +2,7 @@ import { Shadows, createTheme } from '@mui/material';
 import { pink, purple } from '@mui/material/colors';
 import { shadows } from '@mui/system';
 
-import { black, gray } from '../colors';
+import { black, gray, white } from '../colors';
 
 export const darkTheme = createTheme({
   shadows: Array(shadows.length).fill('none') as Shadows,
@@ -18,7 +18,7 @@ export const darkTheme = createTheme({
   backgroundColor: '#1c1c1c',
   typography: {
     body1: {
-      color: black[700],
+      color: white,
       fontFamily: 'Lato',
       fontWeight: '400',
       fontSize: 16,
