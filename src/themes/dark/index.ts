@@ -15,6 +15,17 @@ export const darkTheme = createTheme({
       xl: 1536,
     },
   },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiInputBase-root': {
+            color: white,
+          },
+        },
+      },
+    },
+  },
   backgroundColor: '#1c1c1c',
   typography: {
     body1: {
