@@ -22,6 +22,12 @@ export const darkTheme = createTheme({
           '& .MuiInputBase-root': {
             color: white,
           },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: gray[300],
+          },
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: gray.main,
+          },
         },
       },
     },
