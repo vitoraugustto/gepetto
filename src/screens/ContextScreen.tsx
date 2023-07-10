@@ -253,17 +253,16 @@ const Context: React.FC<{ context: ContextType }> = ({ context }) => {
             borderRadius="8px"
             p="12px"
             key={index}
+            style={{
+              alignItems: message.role === 'user' ? 'flex-start' : 'flex-end',
+            }}
             backgroundColor={
               message.role === 'user'
                 ? theme.palette.secondary.main
                 : theme.palette.secondary[900]
             }
           >
-            <Text
-              align={message.role === 'user' ? 'left' : 'right'}
-              color={white}
-              fontFamily="Merriweather Sans"
-            >
+            <Text color={white} fontFamily="Merriweather Sans">
               {message.content}
             </Text>
           </Box>
