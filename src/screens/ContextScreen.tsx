@@ -122,7 +122,7 @@ export const ContextScreen: React.FC = () => {
                   onChange={(e) => setPrompt(e.target.value)}
                 />
                 <Box
-                  backgroundColor={theme.palette.primary.main}
+                  backgroundColor={theme.palette.secondary.main}
                   minWidth="56px"
                   minHeight="56px"
                   borderRadius="28px"
