@@ -1,5 +1,5 @@
 import { Shadows, createTheme } from '@mui/material';
-import { pink, purple } from '@mui/material/colors';
+import { pink } from '@mui/material/colors';
 import { shadows } from '@mui/system';
 
 import { black, gray, white } from '../colors';
