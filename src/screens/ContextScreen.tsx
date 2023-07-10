@@ -121,30 +121,11 @@ export const ContextScreen: React.FC = () => {
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                 />
-                <Box
-                  backgroundColor={theme.palette.secondary.main}
-                  minWidth="56px"
-                  minHeight="56px"
-                  borderRadius="28px"
-                  onClick={
-                    isButtonDisabled
-                      ? () => null
-                      : () => handleSendPrompt(prompt)
-                  }
-                  style={{
-                    cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
-                    transition: '0.3s',
-                    filter: isButtonDisabled ? 'opacity(0.5)' : 'opacity(1)',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  {status.sendPrompt === 'pending' ? (
-                    <Loading height="38px" width="38px" color={white} />
-                  ) : (
-                    <Send height="38px" width="38px" color={white} />
-                  )}
-                </Box>
+                <SendButton
+                  status={status}
+                  handleSendPrompt={() => handleSendPrompt(prompt)}
+                  isButtonDisabled={isButtonDisabled}
+                />
               </Box>
               <Button
                 variant="text"
@@ -161,6 +142,37 @@ export const ContextScreen: React.FC = () => {
         </Fragment>
       </Box>
     </Background>
+  );
+};
+
+const SendButton: React.FC<{
+  isButtonDisabled: boolean;
+  status: IMedicalChatStatus;
+  handleSendPrompt: () => void;
+}> = ({ isButtonDisabled, status, handleSendPrompt }) => {
+  const theme = useTheme();
+
+  return (
+    <Box
+      backgroundColor={theme.palette.secondary.main}
+      minWidth="56px"
+      minHeight="56px"
+      borderRadius="28px"
+      onClick={isButtonDisabled ? () => null : () => handleSendPrompt()}
+      style={{
+        cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
+        transition: '0.3s',
+        filter: isButtonDisabled ? 'opacity(0.5)' : 'opacity(1)',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      {status.sendPrompt === 'pending' ? (
+        <Loading height="38px" width="38px" color={white} />
+      ) : (
+        <Send height="38px" width="38px" color={white} />
+      )}
+    </Box>
   );
 };
 
