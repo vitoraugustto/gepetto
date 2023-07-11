@@ -16,7 +16,6 @@ import { clearContext, fetchContext, sendPrompt } from '@services/gpt';
 import { white } from '@themes/colors';
 
 export const ContextScreen: React.FC = () => {
-  const theme = useTheme();
   const [prompt, setPrompt] = useState('');
   const [status, setStatus] = useState<IMedicalChatStatus>({
     clearContext: 'idle',
