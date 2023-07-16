@@ -4,10 +4,8 @@ import { darkTheme } from '@themes/dark';
 import './App.css';
 import { Routes } from './routes';
 
-export const App = () => {
-  return (
-    <ThemeProvider theme={darkTheme}>
-      <Routes />
-    </ThemeProvider>
-  );
-};
+export const App = () => (
+  <ThemeProvider theme={darkTheme}>
+    <Routes />
+  </ThemeProvider>
+);
