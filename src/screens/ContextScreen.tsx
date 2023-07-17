@@ -86,21 +86,7 @@ export const ContextScreen: React.FC = () => {
               style={{ justifyContent: 'space-between' }}
             >
               <Box flexDirection="row">
-                <PromptSuggestion
-                  status={status}
-                  suggestion="Sim"
-                  handleSendPrompt={handleSendPrompt}
-                />
-                <PromptSuggestion
-                  status={status}
-                  suggestion="Não"
-                  handleSendPrompt={handleSendPrompt}
-                />
-                <PromptSuggestion
-                  status={status}
-                  suggestion="Não sei"
-                  handleSendPrompt={handleSendPrompt}
-                />
+                <PromptSuggestions status={status} handleSendPrompt={handleSendPrompt} />
               </Box>
               <Fragment>
                 {status.fetchContext === 'pending' ? (
@@ -223,6 +209,31 @@ const PromptSuggestion: React.FC<{
         </Text>
       )}
     </Box>
+  );
+};
+
+const PromptSuggestions: React.FC<{
+  status: IMedicalChatStatus;
+  handleSendPrompt: (prompt: string) => void;
+}> = ({ status, handleSendPrompt }) => {
+  return (
+    <>
+      <PromptSuggestion
+        status={status}
+        suggestion="Sim"
+        handleSendPrompt={handleSendPrompt}
+      />
+      <PromptSuggestion
+        status={status}
+        suggestion="Não"
+        handleSendPrompt={handleSendPrompt}
+      />
+      <PromptSuggestion
+        status={status}
+        suggestion="Não sei"
+        handleSendPrompt={handleSendPrompt}
+      />
+    </>
   );
 };
 
