@@ -22,4 +22,9 @@ AI - (gpt 3.5 turbo)
 - TypeScript
 - Vite
 
+### Back-end
+
+- Node
+- Express
+
 Thank's for using Gepetto!
