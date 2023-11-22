@@ -14,6 +14,8 @@ Gepetto is a healthbot designed to assist you with your symptoms. By providing G
 
 ## Technologies 💻
 
+AI - (gpt 3.5 turbo)
+
 ### Front-end
 
 - React
