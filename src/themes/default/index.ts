@@ -1,11 +1,9 @@
-import { Shadows, createTheme } from '@mui/material';
+import { createTheme } from '@mui/material';
 import { pink, purple } from '@mui/material/colors';
-import { shadows } from '@mui/system';
 
 import { black, gray } from '../colors';
 
 export const defaultTheme = createTheme({
-  shadows: Array(shadows.length).fill('none') as Shadows,
   breakpoints: {
     values: {
       xs: 0,
