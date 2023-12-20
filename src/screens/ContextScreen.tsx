@@ -86,7 +86,10 @@ export const ContextScreen: React.FC = () => {
               style={{ justifyContent: 'space-between' }}
             >
               <Box flexDirection="row">
-                <PromptSuggestions status={status} handleSendPrompt={handleSendPrompt} />
+                <PromptSuggestions
+                  status={status}
+                  handleSendPrompt={handleSendPrompt}
+                />
               </Box>
               <Fragment>
                 {status.fetchContext === 'pending' ? (
@@ -182,7 +185,11 @@ const PromptSuggestion: React.FC<{
   return (
     <Box
       onClick={() => {
-        if (status.sendPrompt === 'pending') return;
+        if (
+          status.sendPrompt === 'pending' ||
+          status.fetchContext === 'pending'
+        )
+          return;
 
         selectedSuggestion = suggestion;
         handleSendPrompt(suggestion);
