@@ -182,19 +182,16 @@ const PromptSuggestion: React.FC<{
 }> = ({ suggestion, status, handleSendPrompt }) => {
   const theme = useTheme();
 
-  return (
-    <Box
-      onClick={() => {
-        if (
-          status.sendPrompt === 'pending' ||
-          status.fetchContext === 'pending'
-        )
-          return;
+  const handleSendSuggestionPrompt = () => {
+    if (status.sendPrompt === 'pending' || status.fetchContext === 'pending')
+      return;
 
-        selectedSuggestion = suggestion;
-        handleSendPrompt(suggestion);
-      }}
-    >
+    selectedSuggestion = suggestion;
+    handleSendPrompt(suggestion);
+  };
+
+  return (
+    <Box onClick={handleSendSuggestionPrompt}>
       {status.sendPrompt === 'pending' && selectedSuggestion === suggestion ? (
         <Loading
           height="20px"
