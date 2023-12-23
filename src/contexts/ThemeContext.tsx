@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
+import { ThemeProvider as MuiThemeProvider } from '@mui/material';
 import { darkTheme } from '@themes/dark';
 import { defaultTheme } from '@themes/default';
 
@@ -20,12 +21,12 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <ThemeContext.Provider value={{ theme, changeTheme }}>
-      {children}
+      <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
     </ThemeContext.Provider>
   );
 };
 
-export const useTheme = () => {
+export const useCustomTheme = () => {
   const context = useContext(ThemeContext);
 
   return context;
