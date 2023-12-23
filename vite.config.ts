@@ -14,6 +14,7 @@ export default defineConfig({
       '@themes': path.resolve(__dirname, './src/themes/'),
       '@services': path.resolve(__dirname, './src/services/'),
       '@config': path.resolve(__dirname, './src/config/'),
+      '@contexts': path.resolve(__dirname, './src/contexts/'),
     },
   },
   plugins: [react(), viteSvgr()],
