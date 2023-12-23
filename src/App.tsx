@@ -1,11 +1,9 @@
-import { ThemeProvider as MuiThemeProvider } from '@mui/material';
-import { darkTheme } from '@themes/dark';
-
 import './App.css';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { Routes } from './routes';
 
 export const App = () => (
-  <MuiThemeProvider theme={darkTheme}>
+  <ThemeProvider>
     <Routes />
-  </MuiThemeProvider>
+  </ThemeProvider>
 );
