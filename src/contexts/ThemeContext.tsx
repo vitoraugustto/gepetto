@@ -3,9 +3,9 @@ import { createContext, useContext, useState } from 'react';
 import { darkTheme } from '@themes/dark';
 import { defaultTheme } from '@themes/default';
 
-const ChangeThemeContext = createContext({});
+const ThemeContext = createContext({});
 
-export const ChangeThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [theme, setTheme] = useState(defaultTheme);
@@ -19,14 +19,14 @@ export const ChangeThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <ChangeThemeContext.Provider value={{ theme, changeTheme }}>
+    <ThemeContext.Provider value={{ theme, changeTheme }}>
       {children}
-    </ChangeThemeContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
 export const useTheme = () => {
-  const context = useContext(ChangeThemeContext);
+  const context = useContext(ThemeContext);
 
   return context;
 };
