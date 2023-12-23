@@ -1,10 +1,13 @@
 import { createContext, useContext, useState } from 'react';
 
-import { ThemeProvider as MuiThemeProvider } from '@mui/material';
+import { ThemeProvider as MuiThemeProvider, Theme } from '@mui/material';
 import { darkTheme } from '@themes/dark';
 import { defaultTheme } from '@themes/default';
 
-const ThemeContext = createContext({});
+const ThemeContext = createContext<{
+  theme: Theme;
+  changeTheme: () => void;
+} | null>(null);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -28,6 +31,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
 export const useCustomTheme = () => {
   const context = useContext(ThemeContext);
+
+  if (!context) {
+    throw new Error('useCustomTheme must be used within a ThemeProvider');
+  }
 
   return context;
 };
