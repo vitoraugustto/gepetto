@@ -12,13 +12,19 @@ const ThemeContext = createContext<{
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState(defaultTheme);
+  const [theme, setTheme] = useState(
+    localStorage.getItem('theme') === 'dark' ? darkTheme : defaultTheme
+  );
 
   const changeTheme = () => {
     if (theme === defaultTheme) {
       setTheme(darkTheme);
+
+      localStorage.setItem('theme', 'dark');
     } else {
       setTheme(defaultTheme);
+
+      localStorage.setItem('theme', 'light');
     }
   };
 
