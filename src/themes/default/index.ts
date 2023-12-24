@@ -48,6 +48,7 @@ export const defaultTheme = createTheme({
     },
   },
   palette: {
+    mode: 'light',
     primary: {
       300: purple[300],
       main: purple[400],
