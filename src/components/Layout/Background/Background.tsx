@@ -21,8 +21,8 @@ export const Background: React.FC<IBackground> = ({ children }) => {
             fontFamily="Merriweather Sans"
             style={{ textDecoration: 'underline' }}
           >
-            Alterar para tema&nbsp;
-            {theme.palette.mode === 'light' ? 'escuro' : 'claro'}
+            Alterar tema&nbsp;
+            {theme.palette.mode === 'light' ? '🌙' : '☀️'}
           </Text>
         </Box>
       </Box>
