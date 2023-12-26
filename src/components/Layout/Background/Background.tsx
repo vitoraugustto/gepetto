@@ -6,7 +6,6 @@ import { IBackground } from './Background.types';
 
 export const Background: React.FC<IBackground> = ({ children }) => {
   const theme = useTheme();
-  const { changeTheme } = useCustomTheme();
 
   return (
     <Box
@@ -15,19 +14,27 @@ export const Background: React.FC<IBackground> = ({ children }) => {
       backgroundColor={theme.backgroundColor}
       minHeight="100vh"
     >
-      <Box flexDirection="row">
-        <Box onClick={changeTheme}>
-          <Text
-            fontFamily="Merriweather Sans"
-            style={{ textDecoration: 'underline' }}
-          >
-            Alterar tema&nbsp;
-            {theme.palette.mode === 'light' ? '🌙' : '☀️'}
-          </Text>
-        </Box>
-      </Box>
-
+      <ChangeThemeButton />
       <>{children}</>
+    </Box>
+  );
+};
+
+const ChangeThemeButton = () => {
+  const { changeTheme } = useCustomTheme();
+  const theme = useTheme();
+
+  return (
+    <Box flexDirection="row">
+      <Box onClick={changeTheme}>
+        <Text
+          fontFamily="Merriweather Sans"
+          style={{ textDecoration: 'underline' }}
+        >
+          Alterar tema&nbsp;
+          {theme.palette.mode === 'light' ? '🌙' : '☀️'}
+        </Text>
+      </Box>
     </Box>
   );
 };
