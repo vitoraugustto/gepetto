@@ -31,5 +31,3 @@ export const Background: React.FC<IBackground> = ({ children }) => {
     </Box>
   );
 };
-
-// ☀
