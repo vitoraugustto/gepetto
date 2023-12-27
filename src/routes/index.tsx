@@ -7,13 +7,11 @@ import {
 import { ContextScreen } from '@screens/ContextScreen';
 import { GettingStartedScreen } from '@screens/GettingStartedScreen';
 
-export const Routes = () => {
-  return (
-    <Router>
-      <_Routes>
-        <Route path="/" element={<GettingStartedScreen />} />
-        <Route path="/context" element={<ContextScreen />} />
-      </_Routes>
-    </Router>
-  );
-};
+export const Routes = () => (
+  <Router>
+    <_Routes>
+      <Route path="/" element={<GettingStartedScreen />} />
+      <Route path="/context" element={<ContextScreen />} />
+    </_Routes>
+  </Router>
+);
