@@ -21,8 +21,7 @@ export const Background: React.FC<IBackground> = ({ children }) => {
 };
 
 const ChangeThemeButton = () => {
-  const { changeTheme } = useCustomTheme();
-  const theme = useTheme();
+  const { theme, changeTheme } = useCustomTheme();
 
   return (
     <Box flexDirection="row">
